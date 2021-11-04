@@ -1,4 +1,4 @@
-# gcp-billing-capper
+# GCP Billing Capping component for Pulumi
 
 ## Usage
 
