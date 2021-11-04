@@ -28,7 +28,7 @@ setup(
 )
 ```
 
-note the use of an explicit Git SHA in `install_requires` - always do this when linking against dependencies via Git or you will become the victim of a supply chain attack!
+**NOTE: make sure to use an explicit Git SHA in `install_requires` - always do this when linking against dependencies via Git or you will become the victim of a supply chain attack!**
 
 ## Usage
 
