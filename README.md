@@ -1,5 +1,7 @@
 # GCP Billing Capping component for Pulumi
 
+Prevent excessive cloud costs via GCP Billing Alerts, Pub/Sub & Cloud Functions.
+
 ## Usage
 
 ```py
