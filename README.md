@@ -2,6 +2,14 @@
 
 Prevent excessive cloud costs via GCP Billing Alerts, Pub/Sub & Cloud Functions.
 
+But don't let me explain it - here's a nice low quality, blocky JPEG instead!
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/5138316/140429689-164dfc5d-5226-4dba-bf55-351f0d594b4d.png" />
+</p>
+
+This is a very crude/simplified implementation at this stage - feature requests welcome and contributions welcome.
+
 ## Installation
 
 `setup.py`
