@@ -8,7 +8,7 @@ But don't let me explain it - here's a picture instead!
   <img src="https://user-images.githubusercontent.com/5138316/140429689-164dfc5d-5226-4dba-bf55-351f0d594b4d.png" />
 </p>
 
-This is a very crude/simplified implementation at this stage - feature requests welcome and contributions welcome.
+This is a very crude/simplified implementation at this stage - feature requests and contributions welcome.
 
 ## Installation
 
