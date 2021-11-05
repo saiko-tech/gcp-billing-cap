@@ -44,7 +44,7 @@ class GCPBillingCap(pulumi.ComponentResource):
             args: GCPBillingCapArgs,
             props: Optional[dict] = None,
             opts: ResourceOptions = None):
-        super().__init__('pkg:index:GCPBillingCap', name, None, opts)
+        super().__init__('gcp_billing_cap:index:GCPBillingCap', name, None, opts)
 
         topic = pubsub.Topic(
             'billing-alerts',
