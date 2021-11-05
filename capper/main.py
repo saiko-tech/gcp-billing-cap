@@ -19,8 +19,9 @@ def __is_billing_enabled(project_name, projects):
     except KeyError:
         # If billingEnabled isn't part of the return, billing is not enabled
         return False
-    except Exception:
+    except Exception as err:
         print('Unable to determine if billing is enabled on specified project, assuming billing is enabled')
+        print(err)
         return True
 
 
@@ -33,8 +34,9 @@ def __disable_billing_for_project(project_name, projects):
     try:
         res = projects.updateBillingInfo(name=project_name, body=body).execute()
         print(f'Billing disabled: {json.dumps(res)}')
-    except Exception:
+    except Exception as err:
         print('Failed to disable billing, possibly check permissions')
+        print(err)
 
 
 def stop_billing(data, context):
