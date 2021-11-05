@@ -1,6 +1,6 @@
 # gcp-billing-cap (Pulumi)
 
-Prevent excessive cloud costs via GCP Billing Alerts, Pub/Sub & Cloud Functions.
+Prevent excessive cloud costs via GCP Billing Alerts, Pub/Sub & Cloud Functions.<br>
 Essentially a pulumified version of https://cloud.google.com/billing/docs/how-to/notify.
 
 But don't let me explain it - here's a picture instead!
