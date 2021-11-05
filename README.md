@@ -21,7 +21,7 @@ git+ssh://git@github.com/saiko-tech/gcp-billing-cap@539a748ad2bbd3dc6aa98fbc6947
 
 **NOTE: make sure to use an explicit Git SHA like in the above example isstead of `@master` etc. - always do this when linking against dependencies via Git or you will become the victim of a supply chain attack!**
 
-2. Clone this repo, you will need the `capper` folder (you probably don't want to reference a random zip on the internet for your cloud function)
+2. Clone this repo, you will need the `capper` folder
 
 ```
 git clone https://github.com/saiko-tech/gcp-billing-cap.git
