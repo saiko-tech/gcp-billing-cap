@@ -4,7 +4,7 @@ from pulumi.output import Input, Output
 import pulumi_gcp
 import pulumi_random
 from pulumi.resource import ResourceOptions
-from pulumi_gcp import billing, pubsub, serviceaccount, cloudfunctions, storage
+from pulumi_gcp import billing, pubsub, serviceaccount, cloudfunctions, storage, projects
 
 
 class GCPBillingCapArgs:
@@ -62,6 +62,20 @@ class GCPBillingCap(pulumi.ComponentResource):
             source=pulumi.FileAsset(args.capper_zip_path),
             opts=ResourceOptions(parent=self))
 
+        sa = serviceaccount.Account(
+            'capper-sa',
+            account_id='billing-capper',
+            display_name='Billing Capper Cloud Functions service acount',
+            opts=ResourceOptions(parent=self))
+        sa_id = sa.email.apply(lambda email: f'serviceAccount:{email}')
+
+        billing.AccountIamMember(
+            'capper-billing-admin',
+            billing_account_id=args.billing_account,
+            role='roles/billing.admin',
+            member=sa_id,
+            opts=ResourceOptions(parent=self))
+
         function = cloudfunctions.Function(
             'capper',
             name='billing-capper',
@@ -77,6 +91,7 @@ class GCPBillingCap(pulumi.ComponentResource):
             environment_variables={
                 'GCP_PROJECT': args.billing_project,
             },
+            service_account_email=sa.email,
             opts=ResourceOptions(parent=self))
 
         suffix = pulumi_random.RandomString(
