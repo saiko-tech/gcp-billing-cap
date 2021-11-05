@@ -12,23 +12,13 @@ This is a very crude/simplified implementation at this stage - feature requests 
 
 ## Installation
 
-`setup.py`
-```py
-from setuptools import setup, find_packages
+Add the following to your Pulumi project's `requirements.txt`:
 
-setup(
-    name = 'my-project',
-    version = '0.1.0',
-    url = 'https://example.com/',
-    description = 'example.com Infrastructure-As-Code using Pulumi',
-    packages = find_packages(),
-    install_requires = [
-        'gcp-billing-cap @ git+ssh://git@github.com/saiko-tech/gcp-billing-cap@24f76341d8c92305f7e7a8b7052f091a5e879c35#egg=gcp-billing-cap',
-    ]
-)
+```
+git+ssh://git@github.com/saiko-tech/gcp-billing-cap@539a748ad2bbd3dc6aa98fbc69474bf7df9075d5#egg=gcp-billing-cap
 ```
 
-**NOTE: make sure to use an explicit Git SHA in `install_requires` - always do this when linking against dependencies via Git or you will become the victim of a supply chain attack!**
+**NOTE: make sure to use an explicit Git SHA like in the above example isstead of `@master` etc. - always do this when linking against dependencies via Git or you will become the victim of a supply chain attack!**
 
 ## Usage
 
