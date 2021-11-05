@@ -34,6 +34,10 @@ cloudresourcemanager_enable = projects.Service(
     'cloudresourcemanager-api',
     service='cloudresourcemanager.googleapis.com')
 
+cloudbilling_enable = projects.Service(
+    'cloudbilling-api',
+    service='cloudbilling.googleapis.com')
+
 billingbudgets_enable = projects.Service(
     'billingbudgets-api',
     service='billingbudgets.googleapis.com')
@@ -52,7 +56,7 @@ capper.GCPBillingCap(
         currency_code='GBP', # must match the currency used in your GCP billing account
         max_spend='100', # £100 per month, must be a string unfortunately
         capper_zip_path='/tmp/capper.zip'),
-    opts=ResourceOptions(depends_on=[billingbudgets_enable, cloudresourcemanager_enable]))
+    opts=ResourceOptions(depends_on=[billingbudgets_enable, cloudresourcemanager_enable, cloudbilling_enable]))
 ```
 
 ## Aknowledgements
