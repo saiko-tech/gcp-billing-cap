@@ -13,13 +13,19 @@ This is a very crude/simplified implementation at this stage - feature requests 
 
 ## Installation
 
-Add the following to your Pulumi project's `requirements.txt`:
+1. Add the following to your Pulumi project's `requirements.txt`:
 
 ```
 git+ssh://git@github.com/saiko-tech/gcp-billing-cap@539a748ad2bbd3dc6aa98fbc69474bf7df9075d5#egg=gcp-billing-cap
 ```
 
 **NOTE: make sure to use an explicit Git SHA like in the above example isstead of `@master` etc. - always do this when linking against dependencies via Git or you will become the victim of a supply chain attack!**
+
+2. Clone this repo, you will need the `capper` folder (you probably don't want to reference a random zip on the internet for your cloud function)
+
+```
+git clone https://github.com/saiko-tech/gcp-billing-cap.git
+```
 
 ## Usage
 
