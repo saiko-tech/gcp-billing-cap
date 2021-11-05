@@ -1,6 +1,7 @@
 # gcp-billing-cap (Pulumi)
 
 Prevent excessive cloud costs via GCP Billing Alerts, Pub/Sub & Cloud Functions.
+Essentially a pulumified version of https://cloud.google.com/billing/docs/how-to/notify.
 
 But don't let me explain it - here's a picture instead!
 
@@ -47,3 +48,8 @@ capper.GCPBillingCap(
         capper_zip_path='/tmp/capper.zip'),
     opts=ResourceOptions(depends_on=[billingbudgets_enable, cloudresourcemanager_enable]))
 ```
+
+## Aknowledgements
+
+- https://cloud.google.com/billing/docs/how-to/notify
+- https://github.com/greenpeace/gp-gcp-disable-billing-cap-cost
