@@ -31,8 +31,8 @@ billingbudgets_enable = projects.Service(
     'billingbudgets-api',
     service='billingbudgets.googleapis.com')
 
-# 'capper' needs to point to the `/capper` directory of this repo
-shutil.make_archive('/tmp/capper', 'zip', 'capper')
+# '/path/to/gcp-billing-cap/capper' needs to point to the `/capper` directory of this repo
+shutil.make_archive('/tmp/capper', 'zip', '/path/to/gcp-billing-cap/capper')
 
 billing_project = gcp.organizations.get_project().name
 billing_account = organizations.get_billing_account(billing_account=config.require('gcpBillingAccount'))
