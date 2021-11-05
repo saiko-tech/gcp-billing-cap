@@ -74,6 +74,9 @@ class GCPBillingCap(pulumi.ComponentResource):
                 event_type='google.pubsub.topic.publish',
                 resource=topic.id),
             entry_point='stop_billing',
+            environment_variables={
+                'GCP_PROJECT': args.billing_project,
+            },
             opts=ResourceOptions(parent=self))
 
         suffix = pulumi_random.RandomString(
