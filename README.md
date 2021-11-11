@@ -16,7 +16,7 @@ This is a very crude/simplified implementation at this stage - feature requests 
 1. Add the following to your Pulumi project's `requirements.txt`:
 
 ```
-git+ssh://git@github.com/saiko-tech/gcp-billing-cap@a9ffcc18ecf974b647a703c4a5604f9f5c55d648#egg=gcp-billing-cap
+git+ssh://git@github.com/saiko-tech/gcp-billing-cap@bdfc3be96c0584e55cf59f38f737e0a5a2031faa#egg=gcp-billing-cap
 ```
 
 **NOTE: make sure to use an explicit Git SHA like in the above example isstead of `@master` etc. - always do this when linking against dependencies via Git or you will become the victim of a supply chain attack!**
