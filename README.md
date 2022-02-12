@@ -16,7 +16,7 @@ This is a very crude/simplified implementation at this stage - feature requests 
 1. Add the following to your Pulumi project's `requirements.txt`:
 
 ```
-git+ssh://git@github.com/saiko-tech/gcp-billing-cap@bdfc3be96c0584e55cf59f38f737e0a5a2031faa#egg=gcp-billing-cap
+git+ssh://git@github.com/saiko-tech/pulumi-gcp-billing-cap@260924ed0a7fab60ed3605a57a59cd67f814c5b3#egg=pulumi-gcp-billing-cap
 ```
 
 **NOTE: make sure to use an explicit Git SHA like in the above example isstead of `@master` etc. - always do this when linking against dependencies via Git or you will become the victim of a supply chain attack!**
@@ -24,12 +24,14 @@ git+ssh://git@github.com/saiko-tech/gcp-billing-cap@bdfc3be96c0584e55cf59f38f737
 2. Clone this repo, you will need the `capper` folder
 
 ```
-git clone https://github.com/saiko-tech/gcp-billing-cap.git
+git clone https://github.com/saiko-tech/pulumi-gcp-billing-cap.git
 ```
 
 ## Usage
 
 ```py
+import pulumi_gcp_billing_cap as capper
+
 cloudresourcemanager_enable = projects.Service(
     'cloudresourcemanager-api',
     service='cloudresourcemanager.googleapis.com')
