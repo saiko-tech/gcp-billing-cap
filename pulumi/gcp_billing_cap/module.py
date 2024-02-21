@@ -14,6 +14,7 @@ class GCPBillingCapArgs:
     billing_project_number: Input[str]
     currency_code: Input[str]
     max_spend: Input[str]
+    location: Input[str]
     capper_zip_path: str
 
 #    @staticmethod
@@ -31,12 +32,14 @@ class GCPBillingCapArgs:
             billing_project_number: Input[str],
             currency_code: Input[str],
             max_spend: Input[str],
+            location: Input[str],
             capper_zip_path: str) -> None:
         self.billing_account = billing_account
         self.billing_project_name = billing_project_name
         self.billing_project_number = billing_project_number
         self.currency_code = currency_code
         self.max_spend = max_spend
+        self.location = location
         self.capper_zip_path = capper_zip_path
 
 
@@ -57,6 +60,7 @@ class GCPBillingCap(pulumi.ComponentResource):
         bucket = storage.Bucket(
             'cloudfunctions-source',
             name='billing-capper-cloudfunction-source',
+            location=location,
             opts=ResourceOptions(parent=self))
 
         archive = storage.BucketObject(
