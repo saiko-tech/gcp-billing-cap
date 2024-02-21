@@ -140,7 +140,7 @@ class GCPBillingCap(pulumi.ComponentResource):
                 threshold_percent=0.5)],
             all_updates_rule=billing.BudgetAllUpdatesRuleArgs(
                 pubsub_topic=topic.id),
-            budget_filter=billing.BudgetBudgetFilter(
+            budget_filter=billing.BudgetBudgetFilterArgs(
                 projects=[f'projects/{args.billing_project_number}']),
             opts=ResourceOptions(
                 parent=self,
