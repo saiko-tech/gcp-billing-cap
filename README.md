@@ -53,14 +53,15 @@ billingbudgets_enable = gcp.projects.Service(
 # '/path/to/gcp-billing-cap/capper' needs to point to the `/capper` directory of this repo
 shutil.make_archive('/tmp/capper', 'zip', '/path/to/gcp-billing-cap/capper')
 
-billing_project = gcp.organizations.get_project().name
+billing_project = gcp.organizations.get_project()
 billing_account = gcp.organizations.get_billing_account(billing_account=config.require('gcpBillingAccount'))
 
 capper.GCPBillingCap(
     'gcp-billing-cap',
     args=capper.GCPBillingCapArgs(
         billing_account=billing_account.id,
-        billing_project=billing_project,
+        billing_project_name=billing_project.name,
+        billing_project_number=billing_project.number,
         currency_code='GBP',  # must match the currency used in your GCP billing account
         max_spend='100',  # £100 per month, must be a string unfortunately
         capper_zip_path='/tmp/capper.zip'),
