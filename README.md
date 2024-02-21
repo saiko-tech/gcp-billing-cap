@@ -64,6 +64,7 @@ capper.GCPBillingCap(
         billing_project_number=billing_project.number,
         currency_code='GBP',  # must match the currency used in your GCP billing account
         max_spend='100',  # £100 per month, must be a string unfortunately
+        location='europe-west1',  # £100 per month, must be a string unfortunately
         capper_zip_path='/tmp/capper.zip'),
     opts=ResourceOptions(depends_on=[billingbudgets_enable, cloudresourcemanager_enable, cloudbilling_enable]))
 ```
