@@ -38,17 +38,13 @@ import shutil
 import pulumi_gcp as gcp
 import pulumi_gcp_billing_cap as capper
 
-cloudresourcemanager_enable = gcp.projects.Service(
-    'cloudresourcemanager-api',
-    service='cloudresourcemanager.googleapis.com')
+cloudresourcemanager_enable = gcp.projects.Service('cloudresourcemanager-api', service='cloudresourcemanager.googleapis.com')
 
-cloudbilling_enable = gcp.projects.Service(
-    'cloudbilling-api',
-    service='cloudbilling.googleapis.com')
+cloudbilling_enable = gcp.projects.Service('cloudbilling-api', service='cloudbilling.googleapis.com')
 
-billingbudgets_enable = gcp.projects.Service(
-    'billingbudgets-api',
-    service='billingbudgets.googleapis.com')
+billingbudgets_enable = gcp.projects.Service('billingbudgets-api', service='billingbudgets.googleapis.com')
+
+cloudfunctions_enable = projects.Service("cloudfunctions-api", service="cloudfunctions.googleapis.com")
 
 # '/path/to/gcp-billing-cap/capper' needs to point to the `/capper` directory of this repo
 shutil.make_archive('/tmp/capper', 'zip', '/path/to/gcp-billing-cap/capper')
@@ -66,7 +62,7 @@ capper.GCPBillingCap(
         max_spend='100',  # £100 per month, must be a string unfortunately
         location='europe-west1',  # where the capper source code is stored in GCS
         capper_zip_path='/tmp/capper.zip'),
-    opts=ResourceOptions(depends_on=[billingbudgets_enable, cloudresourcemanager_enable, cloudbilling_enable]))
+    opts=ResourceOptions(depends_on=[billingbudgets_enable, cloudresourcemanager_enable, cloudbilling_enable, cloudfunctions_enable]))
 ```
 
 ## Aknowledgements
