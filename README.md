@@ -30,17 +30,19 @@ git clone https://github.com/saiko-tech/pulumi-gcp-billing-cap.git
 ## Usage
 
 ```py
+import shutil
+import pulumi_gcp as gcp
 import pulumi_gcp_billing_cap as capper
 
-cloudresourcemanager_enable = projects.Service(
+cloudresourcemanager_enable = gcp.projects.Service(
     'cloudresourcemanager-api',
     service='cloudresourcemanager.googleapis.com')
 
-cloudbilling_enable = projects.Service(
+cloudbilling_enable = gcp.projects.Service(
     'cloudbilling-api',
     service='cloudbilling.googleapis.com')
 
-billingbudgets_enable = projects.Service(
+billingbudgets_enable = gcp.projects.Service(
     'billingbudgets-api',
     service='billingbudgets.googleapis.com')
 
@@ -48,7 +50,7 @@ billingbudgets_enable = projects.Service(
 shutil.make_archive('/tmp/capper', 'zip', '/path/to/gcp-billing-cap/capper')
 
 billing_project = gcp.organizations.get_project().name
-billing_account = organizations.get_billing_account(billing_account=config.require('gcpBillingAccount'))
+billing_account = gcp.organizations.get_billing_account(billing_account=config.require('gcpBillingAccount'))
 
 capper.GCPBillingCap(
     'gcp-billing-cap',
