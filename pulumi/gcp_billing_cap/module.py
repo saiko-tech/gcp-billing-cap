@@ -10,7 +10,8 @@ from pulumi_gcp import billing, pubsub, serviceaccount, cloudfunctions, storage,
 class GCPBillingCapArgs:
 
     billing_account: Input[str]
-    billing_project: Input[str]
+    billing_project_name: Input[str]
+    billing_project_number: Input[str]
     currency_code: Input[str]
     max_spend: Input[str]
     capper_zip_path: str
@@ -26,12 +27,14 @@ class GCPBillingCapArgs:
     def __init__(
             self,
             billing_account: Input[str],
-            billing_project: Input[str],
+            billing_project_name: Input[str],
+            billing_project_number: Input[str],
             currency_code: Input[str],
             max_spend: Input[str],
             capper_zip_path: str) -> None:
         self.billing_account = billing_account
-        self.billing_project = billing_project
+        self.billing_project_name = billing_project_name
+        self.billing_project_number = billing_project_number
         self.currency_code = currency_code
         self.max_spend = max_spend
         self.capper_zip_path = capper_zip_path
@@ -89,7 +92,7 @@ class GCPBillingCap(pulumi.ComponentResource):
                 resource=topic.id),
             entry_point='stop_billing',
             environment_variables={
-                'GCP_PROJECT': args.billing_project,
+                'GCP_PROJECT': args.billing_project_name,
             },
             service_account_email=sa.email,
             opts=ResourceOptions(parent=self))
@@ -117,7 +120,7 @@ class GCPBillingCap(pulumi.ComponentResource):
 
         billing_provider = pulumi_gcp.Provider(
             'billing-provider',
-            billing_project=args.billing_project,
+            billing_project=args.billing_project_name,
             user_project_override=True,
             opts=ResourceOptions(parent=self))
 
@@ -133,6 +136,8 @@ class GCPBillingCap(pulumi.ComponentResource):
                 threshold_percent=0.5)],
             all_updates_rule=billing.BudgetAllUpdatesRuleArgs(
                 pubsub_topic=topic.id),
+            budget_filter=billing.BudgetBudgetFilter(
+                projects=[f'projects/{args.billing_project_number}']),
             opts=ResourceOptions(
                 parent=self,
                 depends_on=[perms],
