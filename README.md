@@ -29,6 +29,10 @@ git clone https://github.com/saiko-tech/pulumi-gcp-billing-cap.git
 
 ## Usage
 
+```terminal
+$ pulumi config set gcpBillingAccount 010101-F0F0F0-F0F0F0
+```
+
 ```py
 import shutil
 import pulumi_gcp as gcp
@@ -57,8 +61,8 @@ capper.GCPBillingCap(
     args=capper.GCPBillingCapArgs(
         billing_account=billing_account.id,
         billing_project=billing_project,
-        currency_code='GBP', # must match the currency used in your GCP billing account
-        max_spend='100', # £100 per month, must be a string unfortunately
+        currency_code='GBP',  # must match the currency used in your GCP billing account
+        max_spend='100',  # £100 per month, must be a string unfortunately
         capper_zip_path='/tmp/capper.zip'),
     opts=ResourceOptions(depends_on=[billingbudgets_enable, cloudresourcemanager_enable, cloudbilling_enable]))
 ```
