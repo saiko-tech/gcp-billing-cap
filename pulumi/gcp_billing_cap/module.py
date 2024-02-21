@@ -60,7 +60,7 @@ class GCPBillingCap(pulumi.ComponentResource):
         bucket = storage.Bucket(
             'cloudfunctions-source',
             name='billing-capper-cloudfunction-source',
-            location=location,
+            location=args.location,
             opts=ResourceOptions(parent=self))
 
         archive = storage.BucketObject(
