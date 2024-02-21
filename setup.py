@@ -2,7 +2,7 @@ from setuptools import setup, find_namespace_packages
 
 setup(
     name = 'pulumi-gcp-billing-cap',
-    version = '0.2.0',
+    version = '0.3.0',
     url = 'https://github.com/saiko-tech/pulumi-gcp-billing-cap',
     description = 'Pulumi package for capping GCP Billing vi Pub/Sub & Cloud Functions',
     packages = ['pulumi_gcp_billing_cap'],
