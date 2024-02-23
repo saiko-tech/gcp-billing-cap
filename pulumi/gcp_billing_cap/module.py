@@ -136,8 +136,12 @@ class GCPBillingCap(pulumi.ComponentResource):
                 specified_amount=billing.BudgetAmountSpecifiedAmountArgs(
                     currency_code=args.currency_code,
                     units=args.max_spend)),
-            threshold_rules=[billing.BudgetThresholdRuleArgs(
-                threshold_percent=0.5)],
+            threshold_rules=[
+                billing.BudgetThresholdRuleArgs(threshold_percent=0.5),
+                billing.BudgetThresholdRuleArgs(threshold_percent=0.75),
+                billing.BudgetThresholdRuleArgs(threshold_percent=0.9),
+                billing.BudgetThresholdRuleArgs(threshold_percent=1),
+            ],
             all_updates_rule=billing.BudgetAllUpdatesRuleArgs(
                 pubsub_topic=topic.id),
             budget_filter=billing.BudgetBudgetFilterArgs(
